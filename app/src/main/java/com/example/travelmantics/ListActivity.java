@@ -29,7 +29,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
         RecyclerView recyclerview = findViewById(R.id.recyclerview);
         DealAdapter adapter = new DealAdapter();
         recyclerview.setAdapter(adapter);
