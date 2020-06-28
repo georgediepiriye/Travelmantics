@@ -25,7 +25,7 @@ public class DealActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert);
 
-        FirebaseUtil.openFbReference("traveldeals");
+        FirebaseUtil.openFbReference("traveldeals", this);
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
 
@@ -99,7 +99,7 @@ public class DealActivity extends AppCompatActivity {
     public void deleteDeal() {
         if (deal == null) {
             Toast.makeText(this, "Please save deal before deleting", Toast.LENGTH_LONG).show();
-        }else{
+        } else {
             mDatabaseReference.child(deal.getId()).removeValue();
             Toast.makeText(this, "Deal deleted", Toast.LENGTH_SHORT).show();
             backToList();

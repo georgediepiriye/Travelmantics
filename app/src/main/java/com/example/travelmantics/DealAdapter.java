@@ -26,7 +26,6 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
     private ChildEventListener mChildListener;
 
     public DealAdapter() {
-        FirebaseUtil.openFbReference("traveldeals");
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
         deals = FirebaseUtil.mDeals;
@@ -37,7 +36,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
                 TravelDeal travelDeal = snapshot.getValue(TravelDeal.class);
                 travelDeal.setId(snapshot.getKey());
                 deals.add(travelDeal);
-                notifyItemInserted(deals.size()-1);
+                notifyItemInserted(deals.size() - 1);
             }
 
             @Override
@@ -63,6 +62,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
         mDatabaseReference.addChildEventListener(mChildListener);
 
     }
+
     @NonNull
     @Override
     public DealViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -95,13 +95,13 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
 
         public DealViewHolder(View itemView) {
             super(itemView);
-            tvTitle =  itemView.findViewById(R.id.title_text_view);
-            tvDescription =  itemView.findViewById(R.id.description_text_view);
-            tvPrice =  itemView.findViewById(R.id.price_text_view);
+            tvTitle = itemView.findViewById(R.id.title_text_view);
+            tvDescription = itemView.findViewById(R.id.description_text_view);
+            tvPrice = itemView.findViewById(R.id.price_text_view);
             itemView.setOnClickListener(this);
         }
 
-        public void bind (TravelDeal deal) {
+        public void bind(TravelDeal deal) {
             tvTitle.setText(deal.getTitle());
             tvDescription.setText(deal.getDescription());
             tvPrice.setText(deal.getPrice());
